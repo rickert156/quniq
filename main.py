@@ -9,9 +9,18 @@ import time
 driver = webdriver.Chrome()
 driver.maximize_window()
 
+def createProject(driver):
+	create_project = input('\nСоздать новый проект?(y/n) ')
+	if create_project == 'y':newProject(driver)
+	elif create_project == 'n':notNewProject(driver)
+	else:
+		print('Некорректный выбор!')
+		createProject(driver)
+
+
 def stepLogin(email):
 	start(driver, domain)
-	selectTest = input('Test Quinq\n\nПользователь зарегистирован?(у/n) ')
+	selectTest = input('Test Quinq\nЭтап Аваторизации, нужно будет вводить команды с клавиатуры.\n\nПользователь зарегистирован?(у/n) ')
 	
 	if selectTest == 'y':
 		auth(driver, email)
@@ -22,19 +31,12 @@ def stepLogin(email):
 		inputDataUser(driver, user_name, user_phone)
 		otpCode(driver, otp_code)
 	else:
-		print('Некорректный выбор!')
-		breake
+		print('Некорректный выбор!\n')
+		stepLogin(email)
 
 	selectCompany(driver)
+	createProject(driver)
 
-	create_project = input('\nСоздать новый проект?(y/n) ')
-	if create_project == 'y':newProject(driver)
-	elif create_project == 'n':notNewProject(driver)
-	else:
-		print('Некорректный выбор!')
-		breake
-
-	
 
 if __name__ == '__main__':
 	stepLogin(email)
