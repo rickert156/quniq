@@ -40,5 +40,3 @@ def auth(driver, email):
 	time.sleep(2)
 	print('Ввел имейл на стартовой странице')
 
-def login(driver):
-	pass
