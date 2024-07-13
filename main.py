@@ -1,8 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from dataTest import email, domain, user_name, user_phone, otp_code
-from positive.start import start 
+from positive.start import start
 from positive.auth import auth, inputDataUser, otpCode, selectCompany
+from positive.newProject import newProject, notNewProject
 import time
 
 driver = webdriver.Chrome()
@@ -10,7 +11,7 @@ driver.maximize_window()
 
 def stepLogin(email):
 	start(driver, domain)
-	selectTest = input('Test Quinq\nПользователь зарегистирован?(у/n) ')
+	selectTest = input('Test Quinq\n\nПользователь зарегистирован?(у/n) ')
 	
 	if selectTest == 'y':
 		auth(driver, email)
@@ -25,6 +26,15 @@ def stepLogin(email):
 		breake
 
 	selectCompany(driver)
+
+	create_project = input('\nСоздать новый проект?(y/n) ')
+	if create_project == 'y':newProject(driver)
+	elif create_project == 'n':notNewProject(driver)
+	else:
+		print('Некорректный выбор!')
+		breake
+
+	
 
 if __name__ == '__main__':
 	stepLogin(email)
