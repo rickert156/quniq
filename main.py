@@ -4,6 +4,7 @@ from dataTest import email, domain, user_name, user_phone, otp_code
 from positive.start import start
 from positive.auth import auth, inputDataUser, otpCode, selectCompany
 from positive.newProject import newProject, notNewProject
+from positive.linkSearch import linkSearch
 import time
 
 driver = webdriver.Chrome()
@@ -36,6 +37,7 @@ def stepLogin(email):
 
 	selectCompany(driver)
 	createProject(driver)
+	linkSearch(driver)
 
 
 if __name__ == '__main__':
