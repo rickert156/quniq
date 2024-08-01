@@ -5,14 +5,13 @@ import time
 
 class_button = 'q-btn__content.text-center.col.items-center.q-anchor--skip.justify-center.row'
 
-def inputDataUser(driver, username, userphone):
+def inputDataUser(driver, username, userLastname, userphone):
 	input_number = 0
 	for userData in driver.find_elements(By.CLASS_NAME, 'q-field__native.q-placeholder'):
 		input_number+=1
-		if input_number == 1:
-			userData.send_keys(username)
-		elif input_number == 2:
-			userData.send_keys(userphone)
+		if input_number == 1:userData.send_keys(username)
+		elif input_number == 2:userData.send_keys(userLastname)
+		elif input_number == 3:userData.send_keys(userphone)
 		time.sleep(1)
 	button = driver.find_element(By.CLASS_NAME, class_button)
 	button.click()

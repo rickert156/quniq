@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from dataTest import email, domain, user_name, user_phone, otp_code
+from dataTest import email, domain, user_name, userLastname, user_phone, otp_code
 from positive.start import start
 from positive.auth import auth, inputDataUser, otpCode, selectCompany
 from positive.newProject import newProject, notNewProject
@@ -29,7 +29,7 @@ def stepLogin(email):
 	elif selectTest == 'n':
 		email = input('Введи имейл для теста: ')
 		auth(driver, email)
-		inputDataUser(driver, user_name, user_phone)
+		inputDataUser(driver, user_name, userLastname, user_phone)
 		otpCode(driver, otp_code)
 	else:
 		print('Некорректный выбор!\n')
