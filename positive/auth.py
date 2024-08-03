@@ -23,7 +23,7 @@ def otpCode(driver, code):
 	otp_code.send_keys(code)
 	otp_code.send_keys(Keys.ENTER)
 	print('Введен OTP код')
-	time.sleep(4)
+	time.sleep(10)
 
 def selectCompany(driver):
 	company = driver.find_element(By.CLASS_NAME, 'q-item__label.q-item__label--caption.text-caption').click()

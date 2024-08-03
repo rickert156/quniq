@@ -37,7 +37,6 @@ def stepLogin(email):
 
 	selectCompany(driver)
 	createProject(driver)
-	linkSearch(driver)
 
 
 if __name__ == '__main__':
