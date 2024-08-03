@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from dataTest import email, domain, user_name, userLastname, user_phone, otp_code
 from positive.start import start
@@ -6,6 +7,14 @@ from positive.auth import auth, inputDataUser, otpCode, selectCompany
 from positive.newProject import newProject, notNewProject
 from positive.linkSearch import linkSearch
 import time
+
+info = """
+Выбрать "y", если для пользователя не было создано бэклогов
+но пользователь зарегистрирован.
+
+Пользователь по умолчанию указывается в dataTest. 
+Для ввода нового пользоваля "n"
+"""
 
 stepAuth = 'Авторизация'
 
@@ -23,7 +32,7 @@ def createProject(driver):
 
 def stepLogin(email):
 	start(driver, domain)
-	selectTest = input(f'Test Quinq\nЭтап [{stepAuth}], нужно будет вводить команды с клавиатуры.\n\nПользователь зарегистирован?(у/n) ')
+	selectTest = input(f'Test Quinq\nЭтап [{stepAuth}], нужно будет вводить команды с клавиатуры.{info}\nПользователь зарегистирован?(у/n) ')
 	
 	if selectTest == 'y':
 		auth(driver, email)
@@ -36,11 +45,14 @@ def stepLogin(email):
 	else:
 		print('Некорректный выбор!\n')
 		stepLogin(email)
-
+	
 	selectCompany(driver)
 	print(f'Этап [{stepAuth}] пройден')
-	createProject(driver)
+	
+	if selectTest == 'n':
+		createProject(driver)
+		time.sleep(5)
 
-
+	
 if __name__ == '__main__':
 	stepLogin(email)

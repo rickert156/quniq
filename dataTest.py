@@ -1,4 +1,4 @@
-email = 'rickert@test.com'
+email = 'rickertsdf@test.com'
 domain = 'https://hill.test.quniq.net/auth'
 user_name = 'Max'
 user_phone = '9961112222'

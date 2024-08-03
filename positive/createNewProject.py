@@ -6,10 +6,10 @@ import time
 
 FIELD = 'q-field__native.q-placeholder'
 ALTERNATIVE_BUTTON = 'q-btn.q-btn-item.non-selectable.no-outline.q-btn--outline.q-btn--rectangle.q-btn--actionable.q-focusable.q-hoverable.q-btn--no-uppercase.aux-buttons'
+BUTTON_BACK = 'q-btn.q-btn-item.non-selectable.no-outline.q-btn--unelevated.q-btn--rectangle.bg-blue.text-white.q-btn--actionable.q-focusable.q-hoverable.q-btn--no-uppercase.q-btn--dense.base-button.base-button--large.q-px-md'
 
 def backButton(driver):
-	BACK_BUTTON = 'q-btn.q-btn-item.non-selectable.no-outline.q-btn--unelevated.q-btn--rectangle.bg-blue.text-white.q-btn--actionable.q-focusable.q-hoverable.q-btn--no-uppercase.q-btn--dense.base-button.base-button--large.q-px-md'
-	back_button = driver.find_element(By.CLASS_NAME, BACK_BUTTON)
+	back_button = driver.find_element(By.CLASS_NAME, BUTTON_BACK)
 	back_button.click()
 	print('Нажал кнопку "Назад", работает')
 	time.sleep(2)
@@ -56,10 +56,10 @@ def projectDescription(driver):
 		if number_field == 2:send_data.send_keys(description)
 		time.sleep(2)
 	print('Ввели название и описание проекта')
-	createBacklog = driver.find_element(By.CLASS_NAME, ALTERNATIVE_BUTTON)
-	createBacklog.click()
-	print('Бэклог Создан')
-	time.sleep(2)
+	createProj = driver.find_element(By.CLASS_NAME, 'q-icon.notranslate.material-icons.icon-arrow-toright')
+	createProj.click()
+	print('Проект Создан')
+	time.sleep()
 
 def createNewProject(driver):
 	number_button = 0
@@ -74,6 +74,7 @@ def createNewProject(driver):
 	role(driver)
 	invite(driver)
 	projectDescription(driver)
+	time.sleep(10)
 
 
 
