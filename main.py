@@ -7,6 +7,8 @@ from positive.newProject import newProject, notNewProject
 from positive.linkSearch import linkSearch
 import time
 
+stepAuth = 'Авторизация'
+
 driver = webdriver.Chrome()
 driver.maximize_window()
 
@@ -21,7 +23,7 @@ def createProject(driver):
 
 def stepLogin(email):
 	start(driver, domain)
-	selectTest = input('Test Quinq\nЭтап Аваторизации, нужно будет вводить команды с клавиатуры.\n\nПользователь зарегистирован?(у/n) ')
+	selectTest = input(f'Test Quinq\nЭтап [{stepAuth}], нужно будет вводить команды с клавиатуры.\n\nПользователь зарегистирован?(у/n) ')
 	
 	if selectTest == 'y':
 		auth(driver, email)
@@ -36,6 +38,7 @@ def stepLogin(email):
 		stepLogin(email)
 
 	selectCompany(driver)
+	print(f'Этап [{stepAuth}] пройден')
 	createProject(driver)
 
 
